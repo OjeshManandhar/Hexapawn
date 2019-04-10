@@ -26,7 +26,11 @@ int main()
     put_pieces();
 
     draw_box_around_piece(0, 0, 1);
-    delay(2000);
+    delay(1000);
+    draw_box_around_piece(1, 1, 1);
+    delay(1000);
+    draw_box_around_piece(2, 2, 1);
+    delay(1000);
     draw_box_around_piece(0, 0, 0);
 
     return 0;

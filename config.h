@@ -15,7 +15,7 @@
 
 //To find the length and breadth of the box depending upon the size of board
 #define LENGTH (4*ROW + 1)
-#define BREADTH (8*COL + 1)
+#define BREADTH (10*COL + 1)
 
 //To find the centre of the screen to draw the box
 #define ROW_POS ((scr_size.row - LENGTH)/2)
@@ -23,7 +23,7 @@
 
 //To find the screen position of the matrix/board
 #define TO_ROW(i) (4*i + 2)
-#define TO_COL(j) (8*j + 4)
+#define TO_COL(j) (10*j + 5)
 
 //Global Variables Declaration
 extern struct position_detail scr_size;         //console size

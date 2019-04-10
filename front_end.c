@@ -22,7 +22,7 @@ void draw_board()
                     ch = 201;
                 else if (j == BREADTH - 1)
                     ch = 187;
-                else if (j%8 == 0)
+                else if (j%10 == 0)
                     ch = 209;
                 else
                     ch = 205;
@@ -33,7 +33,7 @@ void draw_board()
                     ch = 200;
                 else if (j == BREADTH - 1)
                     ch = 188;
-                else if (j%8 == 0)
+                else if (j%10 == 0)
                     ch = 207;
                 else
                     ch = 205;
@@ -44,7 +44,7 @@ void draw_board()
                     ch = 199;
                 else if (j == BREADTH - 1)
                     ch = 182;
-                else if (j%8 == 0)
+                else if (j%10 == 0)
                     ch = 197;
                 else
                     ch = 196;
@@ -53,7 +53,7 @@ void draw_board()
             {
                 if ((j == 0) || (j == BREADTH - 1))
                     ch = 186;
-                else if (j%8 == 0)
+                else if (j%10 == 0)
                     ch = 179;
                 else
                     ch = ' ';
@@ -95,7 +95,7 @@ void draw_box_around_piece(const uint8_t row, const uint8_t col, unsigned short 
     temp_bot.col = bot.col;
 
     top.row = temp_top.row + row*4 + 1;
-    top.col = temp_top.col + col*8 + 1;
+    top.col = temp_top.col + col*10 + 2;
     bot.row = top.row + 2;
     bot.col = top.col + 6;
 

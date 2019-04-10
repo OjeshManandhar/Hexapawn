@@ -1,9 +1,9 @@
 # depslib dependency file v1.0
-1554899944 source:d:\programming\projects\hexapawn\front_end.c
+1554901816 source:d:\programming\projects\hexapawn\front_end.c
 	"config.h"
 	"header.h"
 
-1554900769 d:\programming\projects\hexapawn\config.h
+1554901778 d:\programming\projects\hexapawn\config.h
 	<stdio.h>
 	<stdlib.h>
 	<stdint.h>
