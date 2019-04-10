@@ -30,4 +30,23 @@ extern struct position_detail scr_size;         //console size
 
 extern char board[3][3];            //pointer to store the board matrix/array
 
+enum Status
+{
+    Dead = 0, Alive = 1
+};
+
+struct Pieces
+{
+    enum Status status;
+    struct position_detail position;
+};
+
+struct Character
+{
+    unsigned char sign;
+    struct Pieces piece[3];
+};
+
+extern struct Character computer, player;
+
 #endif // CONFIG_H_INCLUDED
