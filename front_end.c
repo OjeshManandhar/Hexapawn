@@ -76,10 +76,18 @@ void put_pieces()
         }
 }
 
-void draw_box_around_piece(const uint8_t row, const uint8_t col)
+void draw_box_around_piece(const uint8_t row, const uint8_t col, unsigned short int type)
 {
-    uint8_t i, j;
+    /*
+    Type:
+    1 => draw box
+    0 => remove box
+    */
+
     struct position_detail temp_top, temp_bot;
+
+    if (type == 0)
+        type = ' ';
 
     temp_top.row = top.row;
     temp_top.col = top.col;
@@ -91,7 +99,7 @@ void draw_box_around_piece(const uint8_t row, const uint8_t col)
     bot.row = top.row + 2;
     bot.col = top.col + 6;
 
-    print_box(1, 0, 0, 0);
+    print_box(type, 0, 0, 0);
 
     top.row = temp_top.row;
     top.col = temp_top.col;
