@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1554899037 source:d:\programming\projects\hexapawn\front_end.c
+1554899602 source:d:\programming\projects\hexapawn\front_end.c
 	"config.h"
 	"header.h"
 
@@ -10,9 +10,9 @@
 	<inttypes.h>
 	<basic_func.h>
 
-1554898956 d:\programming\projects\hexapawn\header.h
+1554899224 d:\programming\projects\hexapawn\header.h
 
-1554899054 source:d:\programming\projects\hexapawn\main.c
+1554899621 source:d:\programming\projects\hexapawn\main.c
 	"config.h"
 	"header.h"
 

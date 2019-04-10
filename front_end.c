@@ -75,3 +75,26 @@ void put_pieces()
             printf("%c", board[i][j]);
         }
 }
+
+void draw_box_around_piece(const uint8_t row, const uint8_t col)
+{
+    uint8_t i, j;
+    struct position_detail temp_top, temp_bot;
+
+    temp_top.row = top.row;
+    temp_top.col = top.col;
+    temp_bot.row = bot.row;
+    temp_bot.col = bot.col;
+
+    top.row = temp_top.row + row*4 + 1;
+    top.col = temp_top.col + col*8 + 1;
+    bot.row = top.row + 2;
+    bot.col = top.col + 6;
+
+    print_box(1, 0, 0, 0);
+
+    top.row = temp_top.row;
+    top.col = temp_top.col;
+    bot.row = temp_bot.row;
+    bot.col = temp_bot.col;
+}

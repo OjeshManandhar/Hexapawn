@@ -25,5 +25,7 @@ int main()
 
     put_pieces();
 
+    draw_box_around_piece(0, 0);
+
     return 0;
 }
