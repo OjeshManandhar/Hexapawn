@@ -1,6 +1,8 @@
 #include "config.h"
 #include "header.h"
 
+char board[3][3];
+
 void draw_board()
 {
     uint8_t i, j;

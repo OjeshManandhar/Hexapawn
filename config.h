@@ -25,11 +25,7 @@
 #define TO_ROW(i) (4*i + 2)
 #define TO_COL(j) (10*j + 5)
 
-//Global Variables Declaration
-extern struct position_detail scr_size;         //console size
-
-extern char board[3][3];            //pointer to store the board matrix/array
-
+//Local Variables
 enum Status
 {
     Dead = 0, Alive = 1
@@ -46,6 +42,11 @@ struct Character
     unsigned char sign;
     struct Pieces piece[3];
 };
+
+//Global Variables Declaration
+extern struct position_detail scr_size;         //console size
+
+extern char board[3][3];            //pointer to store the board matrix/array
 
 extern struct Character computer, player;
 

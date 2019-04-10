@@ -3,14 +3,6 @@
 
 struct position_detail scr_size = {30, 120};
 
-//Initial positions of pieces
-char board[3][3] = {
-                        {'X', 'X', 'X'},
-                        {' ', ' ', ' '},
-                        {'O', 'O', 'O'}
-                   };
-
-
 int main()
 {
     char screen_size[30];
@@ -23,15 +15,11 @@ int main()
 
     draw_board();
 
-    put_pieces();
+    set_initial_data();
 
-    draw_box_around_piece(0, 0, 1);
-    delay(1000);
-    draw_box_around_piece(1, 1, 1);
-    delay(1000);
-    draw_box_around_piece(2, 2, 1);
-    delay(1000);
-    draw_box_around_piece(0, 0, 0);
+    fill_board();
+
+    put_pieces();
 
     return 0;
 }
