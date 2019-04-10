@@ -1,7 +1,7 @@
 #include "config.h"
 #include "header.h"
 
-char board[3][3];
+char board[ROW][COL];
 
 void draw_board()
 {

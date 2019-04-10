@@ -40,13 +40,13 @@ struct Pieces
 struct Character
 {
     unsigned char sign;
-    struct Pieces piece[3];
+    struct Pieces piece[COL];
 };
 
 //Global Variables Declaration
 extern struct position_detail scr_size;         //console size
 
-extern char board[3][3];            //pointer to store the board matrix/array
+extern char board[ROW][COL];            //pointer to store the board matrix/array
 
 extern struct Character computer, player;
 
