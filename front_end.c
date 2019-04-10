@@ -1,5 +1,3 @@
-#include <stdio.h>
-
 #include "config.h"
 #include "header.h"
 
@@ -63,5 +61,17 @@ void draw_board()
 
             gotoxy(top.row + i, top.col + j);
             printf("%c", ch);
+        }
+}
+
+void put_pieces()
+{
+    uint8_t i, j;
+
+    for (i = 0; i < ROW; i++)
+        for (j = 0; j < COL; j++)
+        {
+            gotoxy(top.row + TO_ROW(i), top.col + TO_COL(j));
+            printf("%c", board[i][j]);
         }
 }

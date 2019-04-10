@@ -1,6 +1,12 @@
 #ifndef CONFIG_H_INCLUDED
 #define CONFIG_H_INCLUDED
 
+//Including Libraries
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
+#include <inttypes.h>
+
 #include <basic_func.h>
 
 //Size of board => Always 3x3
@@ -16,7 +22,7 @@
 #define COL_POS ((scr_size.col - BREADTH)/2)
 
 //To find the screen position of the matrix/board
-#define TO_ROW(i) (4*i + 3)
+#define TO_ROW(i) (4*i + 2)
 #define TO_COL(j) (8*j + 4)
 
 //Global Variables Declaration

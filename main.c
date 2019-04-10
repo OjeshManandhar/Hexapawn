@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-
 #include "config.h"
 #include "header.h"
 
@@ -25,6 +22,8 @@ int main()
     adjust_console_size(scr_size);
 
     draw_board();
+
+    put_pieces();
 
     return 0;
 }
