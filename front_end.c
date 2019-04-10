@@ -16,45 +16,45 @@ void draw_board()
     for (i = 0; i < LENGTH; i++)
         for (j = 0; j < BREADTH; j++)
         {
-            if (i == 0)
+            if (i == 0)             //top line
             {
-                if (j == 0)
+                if (j == 0)             //left line
                     ch = 201;
-                else if (j == BREADTH - 1)
+                else if (j == BREADTH - 1)              //right line
                     ch = 187;
-                else if (j%10 == 0)
-                    ch = 209;
+                else if (j%10 == 0)         //line separating col i.e. intersection point of vertical and horizontal lines
+                    ch = 203;
                 else
                     ch = 205;
             }
-            else if (i == LENGTH - 1)
+            else if (i == LENGTH - 1)               //bottom line
             {
                 if (j == 0)
                     ch = 200;
                 else if (j == BREADTH - 1)
                     ch = 188;
                 else if (j%10 == 0)
-                    ch = 207;
+                    ch = 202;
                 else
                     ch = 205;
             }
-            else if (i%4 == 0)
+            else if (i%4 == 0)              //line separating rows
             {
                 if (j == 0)
-                    ch = 199;
+                    ch = 204;
                 else if (j == BREADTH - 1)
-                    ch = 182;
+                    ch = 185;
                 else if (j%10 == 0)
-                    ch = 197;
+                    ch = 206;
                 else
-                    ch = 196;
+                    ch = 205;
             }
             else
             {
                 if ((j == 0) || (j == BREADTH - 1))
                     ch = 186;
                 else if (j%10 == 0)
-                    ch = 179;
+                    ch = 186;
                 else
                     ch = ' ';
             }
