@@ -28,6 +28,17 @@
 #define TO_COL(j) (10*j + 5)
 
 //Local Variables
+enum Box_Status             //For checking whether a piece is selected or not
+{
+    selected = 0, blank = 0
+};
+
+struct Box
+{
+    enum Box_Status status;
+    struct position_detail positin;
+};
+
 enum Piece_Status
 {
     dead = 0, alive = 1
@@ -51,5 +62,7 @@ extern struct position_detail scr_size;         //console size
 extern char board[ROW][COL];            //pointer to store the board matrix/array
 
 extern struct Character computer, player;
+
+extern struct Box box;
 
 #endif // CONFIG_H_INCLUDED
