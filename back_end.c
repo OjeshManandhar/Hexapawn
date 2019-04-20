@@ -51,6 +51,7 @@ void fill_board()
 
 void player_turn()
 {
+    uint8_t i;
     unsigned int key;
     char temp_piece;
     position_detail temp_position;
@@ -191,6 +192,15 @@ void player_turn()
                 break;
             case ENTER:
                 box.status = blank;
+
+                for (i = 0; i < COL; i++)
+                    if ((player.piece[i].position.row == temp_position.row) && (player.piece[i].position.col == temp_position.col))
+                    {
+                        player.piece[i].position.row = box.position.row;
+                        player.piece[i].position.col = box.position.col;
+
+                        break;
+                    }
                 break;
             }
         }
