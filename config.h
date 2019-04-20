@@ -32,7 +32,7 @@ typedef struct position_detail position_detail;
 //Local Variables
 typedef enum Box_Status             //For checking whether a piece is selected or not
 {
-    selected = 0, blank = 0
+    blank = 0, selected = 1
 } Box_Status;
 
 typedef struct Box

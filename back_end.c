@@ -49,6 +49,19 @@ void player_turn()
 
     do
     {
+        if (box.status == selected)
+        {
+            while (!kbhit())
+            {
+                draw_box_around_piece(0);
+                gotoxy(scr_size.row - 1, scr_size.col - 1);
+                delay(500);
+                draw_box_around_piece(1);
+                gotoxy(scr_size.row - 1, scr_size.col - 1);
+                delay(500);
+            }
+        }
+
         key = get_key();
 
         switch (key)
@@ -85,7 +98,11 @@ void player_turn()
                 draw_box_around_piece(1);
             }
             break;
+        case ENTER:
+            if (box.status == selected)
+                box.status = blank;
+            else if (box.status == blank)
+                box.status = selected;
         }
     }while (key != ESC);
-
 }
