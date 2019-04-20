@@ -201,6 +201,9 @@ void player_turn()
 
                         break;
                     }
+
+                fill_board();
+
                 break;
             }
         }
