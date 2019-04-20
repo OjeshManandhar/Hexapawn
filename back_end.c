@@ -52,10 +52,66 @@ void fill_board()
 void player_turn()
 {
     unsigned int key;
+    char temp_piece;
+    position_detail temp_position;
 
     do
     {
-        if ((box.status == selected) && (board[box.position.row][box.position.col] != ' '))
+        if (box.status == blank)
+        {
+            key = get_key();
+
+            switch (key)
+            {
+            case UP:
+                if (box.position.row != 0)
+                {
+                    draw_box_around_piece(0);
+                    box.position.row--;
+                    draw_box_around_piece(1);
+                }
+                break;
+            case DOWN:
+                if (box.position.row != ROW - 1)
+                {
+                    draw_box_around_piece(0);
+                    box.position.row++;
+                    draw_box_around_piece(1);
+                }
+                break;
+            case LEFT:
+                if (box.position.col != 0)
+                {
+                    draw_box_around_piece(0);
+                    box.position.col--;
+                    draw_box_around_piece(1);
+                }
+                break;
+            case RIGHT:
+                if (box.position.col != COL - 1)
+                {
+                    draw_box_around_piece(0);
+                    box.position.col++;
+                    draw_box_around_piece(1);
+                }
+                break;
+            case ENTER:
+                if (board[box.position.row][box.position.col] == 'O')
+                {
+                    box.status = selected;
+
+                    temp_piece = board[box.position.row][box.position.col];
+                    temp_position.row = box.position.row;
+                    temp_position.col = box.position.col;
+
+                    board[box.position.row][box.position.col] = ' ';
+                }
+                break;
+            default:
+                break;
+            }
+        }
+        else if (box.status == selected)
         {
             while (!kbhit())
             {
@@ -67,54 +123,76 @@ void player_turn()
 
                 draw_box_around_piece(1);
                 gotoxy(top.row + TO_ROW(box.position.row), top.col + TO_COL(box.position.col));
-                printf("%c", board[box.position.row][box.position.col]);
+                printf("%c", temp_piece);
                 gotoxy(scr_size.row - 1, scr_size.col - 1);
                 delay(400);
             }
-        }
-        fflush(stdin);
+            fflush(stdin);
 
-        key = get_key();
+            key = get_key();
 
-        switch (key)
-        {
-        case UP:
-            if (box.position.row != 0)
+            switch (key)
             {
-                draw_box_around_piece(0);
-                box.position.row--;
-                draw_box_around_piece(1);
-            }
-            break;
-        case DOWN:
-            if (box.position.row != ROW - 1)
-            {
-                draw_box_around_piece(0);
-                box.position.row++;
-                draw_box_around_piece(1);
-            }
-            break;
-        case LEFT:
-            if (box.position.col != 0)
-            {
-                draw_box_around_piece(0);
-                box.position.col--;
-                draw_box_around_piece(1);
-            }
-            break;
-        case RIGHT:
-            if (box.position.col != COL - 1)
-            {
-                draw_box_around_piece(0);
-                box.position.col++;
-                draw_box_around_piece(1);
-            }
-            break;
-        case ENTER:
-            if (box.status == selected)
+            case UP:
+                if (box.position.row != 0 && board[box.position.row - 1][box.position.col] == ' ')
+                {
+                    draw_box_around_piece(0);
+                    gotoxy(top.row + TO_ROW(box.position.row), top.col + TO_COL(box.position.col));
+                    printf(" ");
+
+                    box.position.row--;
+
+                    draw_box_around_piece(1);
+                    gotoxy(top.row + TO_ROW(box.position.row), top.col + TO_COL(box.position.col));
+                    printf("%c", temp_piece);
+                }
+                break;
+            case DOWN:
+                if (box.position.row != ROW - 1 && board[box.position.row + 1][box.position.col] == ' ')
+                {
+                    draw_box_around_piece(0);
+                    gotoxy(top.row + TO_ROW(box.position.row), top.col + TO_COL(box.position.col));
+                    printf(" ");
+
+                    box.position.row++;
+
+                    draw_box_around_piece(1);
+                    gotoxy(top.row + TO_ROW(box.position.row), top.col + TO_COL(box.position.col));
+                    printf("%c", temp_piece);
+                }
+                break;
+            case LEFT:
+                if (box.position.col != 0 && board[box.position.row][box.position.col - 1] == ' ')
+                {
+                    draw_box_around_piece(0);
+                    gotoxy(top.row + TO_ROW(box.position.row), top.col + TO_COL(box.position.col));
+                    printf(" ");
+
+                    box.position.col--;
+
+                    draw_box_around_piece(1);
+                    gotoxy(top.row + TO_ROW(box.position.row), top.col + TO_COL(box.position.col));
+                    printf("%c", temp_piece);
+                }
+                break;
+            case RIGHT:
+                if (box.position.col != COL - 1 && board[box.position.row][box.position.col + 1] == ' ')
+                {
+                    draw_box_around_piece(0);
+                    gotoxy(top.row + TO_ROW(box.position.row), top.col + TO_COL(box.position.col));
+                    printf(" ");
+
+                    box.position.col++;
+
+                    draw_box_around_piece(1);
+                    gotoxy(top.row + TO_ROW(box.position.row), top.col + TO_COL(box.position.col));
+                    printf("%c", temp_piece);
+                }
+                break;
+            case ENTER:
                 box.status = blank;
-            else if (box.status == blank)
-                box.status = selected;
+                break;
+            }
         }
     }while (key != ESC);
 }
