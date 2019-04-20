@@ -14,11 +14,11 @@ void set_initial_data()
 
     for (i = 0; i < COL; i++)
     {
-        computer.piece[i].status = Alive;
+        computer.piece[i].status = alive;
         computer.piece[i].position.row = 0;
         computer.piece[i].position.col = i;
 
-        player.piece[i].status = Alive;
+        player.piece[i].status = alive;
         player.piece[i].position.row = ROW - 1;
         player.piece[i].position.col = i;
     }

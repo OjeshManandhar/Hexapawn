@@ -28,14 +28,14 @@
 #define TO_COL(j) (10*j + 5)
 
 //Local Variables
-enum Status
+enum Piece_Status
 {
-    Dead = 0, Alive = 1
+    dead = 0, alive = 1
 };
 
 struct Pieces
 {
-    enum Status status;
+    enum Piece_Status status;
     struct position_detail position;
 };
 
