@@ -21,5 +21,7 @@ int main()
 
     put_pieces();
 
+    player_turn();
+
     return 0;
 }

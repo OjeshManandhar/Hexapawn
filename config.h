@@ -38,7 +38,7 @@ typedef enum Box_Status             //For checking whether a piece is selected o
 typedef struct Box
 {
     Box_Status status;
-    position_detail positin;
+    position_detail position;
 } Box;
 
 typedef enum Piece_Status
@@ -59,6 +59,8 @@ typedef struct Character
 } Character;
 
 //Global Variables Declaration
+extern uint8_t round_no;
+
 extern position_detail scr_size;         //console size
 
 extern char board[ROW][COL];            //pointer to store the board matrix/array

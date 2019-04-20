@@ -77,6 +77,8 @@ void put_pieces()
             gotoxy(top.row + TO_ROW(i), top.col + TO_COL(j));
             printf("%c", board[i][j]);
         }
+
+    draw_box_around_piece(1);
 }
 
 void draw_box_around_piece(unsigned short int type)

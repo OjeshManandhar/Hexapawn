@@ -1,9 +1,10 @@
 #include "config.h"
 #include "header.h"
 
-Character computer, player;
-
+uint8_t round_no;
 char board[ROW][COL];
+Character computer, player;
+Box box;
 
 void set_initial_data()
 {
@@ -22,6 +23,10 @@ void set_initial_data()
         player.piece[i].position.row = ROW - 1;
         player.piece[i].position.col = i;
     }
+
+    box.status = blank;
+    box.position.row = ROW - 1;
+    box.position.col = 0;
 }
 
 void fill_board()
@@ -36,4 +41,51 @@ void fill_board()
         if (player.piece[i].status == alive)
             board[player.piece[i].position.row][player.piece[i].position.col] = player.sign;
     }
+}
+
+void player_turn()
+{
+    unsigned int key;
+
+    do
+    {
+        key = get_key();
+
+        switch (key)
+        {
+        case UP:
+            if (box.position.row != 0)
+            {
+                draw_box_around_piece(0);
+                box.position.row--;
+                draw_box_around_piece(1);
+            }
+            break;
+        case DOWN:
+            if (box.position.row != ROW - 1)
+            {
+                draw_box_around_piece(0);
+                box.position.row++;
+                draw_box_around_piece(1);
+            }
+            break;
+        case LEFT:
+            if (box.position.col != 0)
+            {
+                draw_box_around_piece(0);
+                box.position.col--;
+                draw_box_around_piece(1);
+            }
+            break;
+        case RIGHT:
+            if (box.position.col != COL - 1)
+            {
+                draw_box_around_piece(0);
+                box.position.col++;
+                draw_box_around_piece(1);
+            }
+            break;
+        }
+    }while (key != ESC);
+
 }
