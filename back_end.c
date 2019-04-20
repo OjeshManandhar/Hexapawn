@@ -1,7 +1,7 @@
 #include "config.h"
 #include "header.h"
 
-struct Character computer, player;
+Character computer, player;
 
 char board[ROW][COL];
 
@@ -30,10 +30,10 @@ void fill_board()
 
     for (i = 0; i < COL; i++)
     {
-        if (computer.piece[i].status == Alive)
+        if (computer.piece[i].status == alive)
             board[computer.piece[i].position.row][computer.piece[i].position.col] = computer.sign;
 
-        if (player.piece[i].status == Alive)
+        if (player.piece[i].status == alive)
             board[player.piece[i].position.row][player.piece[i].position.col] = player.sign;
     }
 }

@@ -1,7 +1,7 @@
 #include "config.h"
 #include "header.h"
 
-struct position_detail scr_size = {30, 120};
+position_detail scr_size = {30, 120};
 
 int main()
 {

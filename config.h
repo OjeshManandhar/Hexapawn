@@ -27,42 +27,44 @@
 #define TO_ROW(i) (4*i + 2)
 #define TO_COL(j) (10*j + 5)
 
+typedef struct position_detail position_detail;
+
 //Local Variables
-enum Box_Status             //For checking whether a piece is selected or not
+typedef enum Box_Status             //For checking whether a piece is selected or not
 {
     selected = 0, blank = 0
-};
+} Box_Status;
 
-struct Box
+typedef struct Box
 {
-    enum Box_Status status;
-    struct position_detail positin;
-};
+    Box_Status status;
+    position_detail positin;
+} Box;
 
-enum Piece_Status
+typedef enum Piece_Status
 {
     dead = 0, alive = 1
-};
+} Piece_Status;
 
-struct Pieces
+typedef struct Pieces
 {
-    enum Piece_Status status;
-    struct position_detail position;
-};
+    Piece_Status status;
+    position_detail position;
+} Pieces;
 
-struct Character
+typedef struct Character
 {
     unsigned char sign;
-    struct Pieces piece[COL];
-};
+    Pieces piece[COL];
+} Character;
 
 //Global Variables Declaration
-extern struct position_detail scr_size;         //console size
+extern position_detail scr_size;         //console size
 
 extern char board[ROW][COL];            //pointer to store the board matrix/array
 
-extern struct Character computer, player;
+extern Character computer, player;
 
-extern struct Box box;
+extern Box box;
 
 #endif // CONFIG_H_INCLUDED
