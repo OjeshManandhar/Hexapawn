@@ -31,8 +31,14 @@ void set_initial_data()
 
 void fill_board()
 {
-    uint8_t i;
+    uint8_t i, j;
 
+    //Filing board with spaces
+    for (i = 0; i < ROW; i++)
+        for (j = 0; j < COL; j++)
+            board[i][j] = ' ';
+
+    //Substituting spaces with pieces
     for (i = 0; i < COL; i++)
     {
         if (computer.piece[i].status == alive)
@@ -49,18 +55,24 @@ void player_turn()
 
     do
     {
-        if (box.status == selected)
+        if ((box.status == selected) && (board[box.position.row][box.position.col] != ' '))
         {
             while (!kbhit())
             {
                 draw_box_around_piece(0);
+                gotoxy(top.row + TO_ROW(box.position.row), top.col + TO_COL(box.position.col));
+                printf(" ");
                 gotoxy(scr_size.row - 1, scr_size.col - 1);
-                delay(500);
+                delay(400);
+
                 draw_box_around_piece(1);
+                gotoxy(top.row + TO_ROW(box.position.row), top.col + TO_COL(box.position.col));
+                printf("%c", board[box.position.row][box.position.col]);
                 gotoxy(scr_size.row - 1, scr_size.col - 1);
-                delay(500);
+                delay(400);
             }
         }
+        fflush(stdin);
 
         key = get_key();
 
