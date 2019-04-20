@@ -2,6 +2,7 @@
 #include "header.h"
 
 char board[ROW][COL];
+Box box;
 
 void draw_board()
 {
@@ -78,7 +79,7 @@ void put_pieces()
         }
 }
 
-void draw_box_around_piece(const uint8_t row, const uint8_t col, unsigned short int type)
+void draw_box_around_piece(unsigned short int type)
 {
     /*
     Type:
@@ -96,8 +97,8 @@ void draw_box_around_piece(const uint8_t row, const uint8_t col, unsigned short 
     temp_bot.row = bot.row;
     temp_bot.col = bot.col;
 
-    top.row = temp_top.row + row*4 + 1;
-    top.col = temp_top.col + col*10 + 2;
+    top.row = temp_top.row + box.position.row*4 + 1;
+    top.col = temp_top.col + box.position.col*10 + 2;
     bot.row = top.row + 2;
     bot.col = top.col + 6;
 
