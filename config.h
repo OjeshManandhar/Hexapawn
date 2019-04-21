@@ -48,6 +48,7 @@ typedef enum Piece_Status
 
 typedef struct Pieces
 {
+    char id;
     Piece_Status status;
     position_detail position;
 } Pieces;

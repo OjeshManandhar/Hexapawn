@@ -15,10 +15,12 @@ void set_initial_data()
 
     for (i = 0; i < COL; i++)
     {
+        computer.piece[i].id = 'a' + i;
         computer.piece[i].status = alive;
         computer.piece[i].position.row = 0;
         computer.piece[i].position.col = i;
 
+        player.piece[i].id = '0' + i;
         player.piece[i].status = alive;
         player.piece[i].position.row = ROW - 1;
         player.piece[i].position.col = i;
