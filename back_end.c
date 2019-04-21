@@ -44,10 +44,10 @@ void fill_board()
     for (i = 0; i < COL; i++)
     {
         if (computer.piece[i].status == alive)
-            board[computer.piece[i].position.row][computer.piece[i].position.col] = computer.sign;
+            board[computer.piece[i].position.row][computer.piece[i].position.col] = computer.piece[i].id;
 
         if (player.piece[i].status == alive)
-            board[player.piece[i].position.row][player.piece[i].position.col] = player.sign;
+            board[player.piece[i].position.row][player.piece[i].position.col] = player.piece[i].id;
     }
 }
 

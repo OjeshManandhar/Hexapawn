@@ -10,7 +10,7 @@
 #include <basic_func.h>
 
 //Size of board => Always 3x3
-//But can be changed
+//DO NOT CHANGE
 //========== Working in AI with 3x3 size only ==========
 #define ROW 3
 #define COL 3

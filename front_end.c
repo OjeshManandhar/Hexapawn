@@ -75,7 +75,10 @@ void put_pieces()
         for (j = 0; j < COL; j++)
         {
             gotoxy(top.row + TO_ROW(i), top.col + TO_COL(j));
-            printf("%c", board[i][j]);
+            if (board[i][j] >= 'a' && board[i][j] <= 'z')
+                printf("%c", computer.sign);
+            else if (board[i][j] >= '0' && board[i][j] <= '9')
+                printf("%c", player.sign);
         }
 
     draw_box_around_piece(1);
