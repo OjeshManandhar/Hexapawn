@@ -155,15 +155,15 @@ void player_turn()
             {
                 draw_box_around_piece(0);
                 gotoxy(top.row + TO_ROW(box.position.row), top.col + TO_COL(box.position.col));
-                printf(" ");
+                printf("%c", check_piece('t', 0, 0));
                 gotoxy(scr_size.row - 1, scr_size.col - 1);
-                delay(400);
+                delay(500);
 
                 draw_box_around_piece(1);
                 gotoxy(top.row + TO_ROW(box.position.row), top.col + TO_COL(box.position.col));
                 printf("%c", player.sign);
                 gotoxy(scr_size.row - 1, scr_size.col - 1);
-                delay(400);
+                delay(500);
             }
             fflush(stdin);
 
@@ -176,7 +176,7 @@ void player_turn()
                 {
                     draw_box_around_piece(0);
                     gotoxy(top.row + TO_ROW(box.position.row), top.col + TO_COL(box.position.col));
-                    printf(" ");
+                    printf("%c", check_piece('t', 0, 0));
 
                     box.position.row--;
 
@@ -192,7 +192,7 @@ void player_turn()
                 {
                     draw_box_around_piece(0);
                     gotoxy(top.row + TO_ROW(box.position.row), top.col + TO_COL(box.position.col));
-                    printf(" ");
+                    printf("%c", check_piece('t', 0, 0));
 
                     box.position.row++;
 
@@ -211,7 +211,7 @@ void player_turn()
             case LEFT:
                 draw_box_around_piece(0);
                 gotoxy(top.row + TO_ROW(box.position.row), top.col + TO_COL(box.position.col));
-                printf(" ");
+                printf("%c", check_piece('t', 0, 0));
 
                 if (new_position == 0 && box.position.col != 0 && box.position.row != 0 && check_piece('t', -1, -1) == 'X')
                 {
@@ -246,7 +246,7 @@ void player_turn()
             case RIGHT:
                 draw_box_around_piece(0);
                 gotoxy(top.row + TO_ROW(box.position.row), top.col + TO_COL(box.position.col));
-                printf(" ");
+                printf("%c", check_piece('t', 0, 0));
 
                 if (new_position == 0 && box.position.col != COL - 1 && box.position.row != 0 && check_piece('t', -1, 1) == 'X')
                 {
