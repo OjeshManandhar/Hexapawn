@@ -87,7 +87,7 @@ void player_turn()
 {
     unsigned int key;
     uint8_t i, j, selected_piece;
-    char temp_piece, new_position;
+    char new_position;
 
     do
     {
@@ -166,7 +166,6 @@ void player_turn()
                 delay(500);
             }
             fflush(stdin);
-
             key = get_key();            //Pressed key
 
             switch (key)
@@ -289,6 +288,15 @@ void player_turn()
 
                         break;
                     }
+
+                if (check_piece('t', 0, 0) == 'X')
+                    for (i = 0; i < COL; i++)
+                        if (computer.piece[i].id == temp_board[box.position.row][box.position.col])
+                        {
+                            computer.piece[i].status = dead;
+
+                            break;
+                        }
 
                 fill_board();
 
