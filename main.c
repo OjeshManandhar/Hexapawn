@@ -19,7 +19,8 @@ int main()
 
     set_initial_data();
 
-    computer.piece[1].position.row = 1;
+    computer.piece[0].position.row = 1;
+    computer.piece[2].position.row = 1;
 
     fill_board();
 
