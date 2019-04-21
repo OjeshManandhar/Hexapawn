@@ -79,6 +79,8 @@ void put_pieces()
                 printf("%c", computer.sign);
             else if (board[i][j] >= '0' && board[i][j] <= '9')
                 printf("%c", player.sign);
+            else if (board[i][j] == ' ')
+                printf(" ");
         }
 
     draw_box_around_piece(1);

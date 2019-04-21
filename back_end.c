@@ -280,6 +280,7 @@ void player_turn()
             case ENTER:
                 box.status = blank;
 
+                //Change position of players piece
                 for (i = 0; i < COL; i++)
                     if (player.piece[i].id == selected_piece)
                     {
@@ -289,6 +290,7 @@ void player_turn()
                         break;
                     }
 
+                //Kill computer piece
                 if (check_piece('t', 0, 0) == 'X')
                     for (i = 0; i < COL; i++)
                         if (computer.piece[i].id == temp_board[box.position.row][box.position.col])
@@ -299,6 +301,18 @@ void player_turn()
                         }
 
                 fill_board();
+
+                break;
+            case ESC:
+                box.status = blank;
+
+                key = 0;
+
+                fill_board();
+
+                draw_box_around_piece(0);
+
+                put_pieces();
 
                 break;
             }
