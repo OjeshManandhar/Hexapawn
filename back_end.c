@@ -51,10 +51,9 @@ void fill_board()
 
 void player_turn()
 {
-    uint8_t i;
     unsigned int key;
-    char temp_piece;
-    position_detail temp_position;
+    uint8_t i, seleccted_piece;
+    char temp_piece, new_position;
 
     do
     {
@@ -101,9 +100,15 @@ void player_turn()
                 {
                     box.status = selected;
 
+                    new_position = 0;
+
                     temp_piece = board[box.position.row][box.position.col];
-                    temp_position.row = box.position.row;
-                    temp_position.col = box.position.col;
+                    for (i = 0; i < COL; i++)
+                        if ((player.piece[i].position.row == box.position.row) && (player.piece[i].position.col == box.position.col))
+                        {
+                            seleccted_piece = i;
+                            break;
+                        }
 
                     board[box.position.row][box.position.col] = ' ';
                 }
@@ -135,7 +140,7 @@ void player_turn()
             switch (key)
             {
             case UP:
-                if (box.position.row != 0 && board[box.position.row - 1][box.position.col] == ' ')
+                if (box.position.row != 0 && board[box.position.row - 1][box.position.col] == ' ' && new_position == 0)
                 {
                     draw_box_around_piece(0);
                     gotoxy(top.row + TO_ROW(box.position.row), top.col + TO_COL(box.position.col));
@@ -146,10 +151,12 @@ void player_turn()
                     draw_box_around_piece(1);
                     gotoxy(top.row + TO_ROW(box.position.row), top.col + TO_COL(box.position.col));
                     printf("%c", temp_piece);
+
+                    new_position = 'u';
                 }
                 break;
             case DOWN:
-                if (box.position.row != ROW - 1 && board[box.position.row + 1][box.position.col] == ' ')
+                if (new_position == 'u')
                 {
                     draw_box_around_piece(0);
                     gotoxy(top.row + TO_ROW(box.position.row), top.col + TO_COL(box.position.col));
@@ -160,10 +167,46 @@ void player_turn()
                     draw_box_around_piece(1);
                     gotoxy(top.row + TO_ROW(box.position.row), top.col + TO_COL(box.position.col));
                     printf("%c", temp_piece);
+
+                    new_position = 0;
+                }
+                else if (new_position == 'l' || new_position == 'r')
+                {
+                    draw_box_around_piece(0);
+                    gotoxy(top.row + TO_ROW(box.position.row), top.col + TO_COL(box.position.col));
+                    printf(" ");
+
+                    box.position.row++;
+
+                    if (new_position == 'l')
+                        box.position.col++;
+                    else if (new_position == 'r')
+                        box.position.col--;
+
+                    draw_box_around_piece(1);
+                    gotoxy(top.row + TO_ROW(box.position.row), top.col + TO_COL(box.position.col));
+                    printf("%c", temp_piece);
+
+                    new_position = 0;
                 }
                 break;
             case LEFT:
-                if (box.position.col != 0 && board[box.position.row][box.position.col - 1] == ' ')
+                if (new_position == 0 && box.position.col != 0 && box.position.row != 0 && board[box.position.row - 1][box.position.col - 1] == 'X')
+                {
+                    draw_box_around_piece(0);
+                    gotoxy(top.row + TO_ROW(box.position.row), top.col + TO_COL(box.position.col));
+                    printf(" ");
+
+                    box.position.row--;
+                    box.position.col--;
+
+                    draw_box_around_piece(1);
+                    gotoxy(top.row + TO_ROW(box.position.row), top.col + TO_COL(box.position.col));
+                    printf("%c", temp_piece);
+
+                    new_position = 'l';
+                }
+                else if (new_position == 'u' && box.position.col != 0 && board[box.position.row][box.position.col - 1] == 'X')
                 {
                     draw_box_around_piece(0);
                     gotoxy(top.row + TO_ROW(box.position.row), top.col + TO_COL(box.position.col));
@@ -174,10 +217,41 @@ void player_turn()
                     draw_box_around_piece(1);
                     gotoxy(top.row + TO_ROW(box.position.row), top.col + TO_COL(box.position.col));
                     printf("%c", temp_piece);
+
+                    new_position = 'l';
+                }
+                else if (new_position == 'r')
+                {
+                    draw_box_around_piece(0);
+                    gotoxy(top.row + TO_ROW(box.position.row), top.col + TO_COL(box.position.col));
+                    printf(" ");
+
+                    box.position.col--;
+
+                    draw_box_around_piece(1);
+                    gotoxy(top.row + TO_ROW(box.position.row), top.col + TO_COL(box.position.col));
+                    printf("%c", temp_piece);
+
+                    new_position = 'u';
                 }
                 break;
             case RIGHT:
-                if (box.position.col != COL - 1 && board[box.position.row][box.position.col + 1] == ' ')
+                if (new_position == 0 && box.position.col != COL - 1 && box.position.row != 0 && board[box.position.row - 1][box.position.col + 1] == 'X')
+                {
+                    draw_box_around_piece(0);
+                    gotoxy(top.row + TO_ROW(box.position.row), top.col + TO_COL(box.position.col));
+                    printf(" ");
+
+                    box.position.row--;
+                    box.position.col++;
+
+                    draw_box_around_piece(1);
+                    gotoxy(top.row + TO_ROW(box.position.row), top.col + TO_COL(box.position.col));
+                    printf("%c", temp_piece);
+
+                    new_position = 'r';
+                }
+                else if (new_position == 'u' && box.position.col != COL - 1 && board[box.position.row][box.position.col + 1] == 'X')
                 {
                     draw_box_around_piece(0);
                     gotoxy(top.row + TO_ROW(box.position.row), top.col + TO_COL(box.position.col));
@@ -188,19 +262,29 @@ void player_turn()
                     draw_box_around_piece(1);
                     gotoxy(top.row + TO_ROW(box.position.row), top.col + TO_COL(box.position.col));
                     printf("%c", temp_piece);
+
+                    new_position = 'r';
+                }
+                else if (new_position == 'l')
+                {
+                    draw_box_around_piece(0);
+                    gotoxy(top.row + TO_ROW(box.position.row), top.col + TO_COL(box.position.col));
+                    printf(" ");
+
+                    box.position.col++;
+
+                    draw_box_around_piece(1);
+                    gotoxy(top.row + TO_ROW(box.position.row), top.col + TO_COL(box.position.col));
+                    printf("%c", temp_piece);
+
+                    new_position = 'u';
                 }
                 break;
             case ENTER:
                 box.status = blank;
 
-                for (i = 0; i < COL; i++)
-                    if ((player.piece[i].position.row == temp_position.row) && (player.piece[i].position.col == temp_position.col))
-                    {
-                        player.piece[i].position.row = box.position.row;
-                        player.piece[i].position.col = box.position.col;
-
-                        break;
-                    }
+                player.piece[seleccted_piece].position.row = box.position.row;
+                player.piece[seleccted_piece].position.col = box.position.col;
 
                 fill_board();
 

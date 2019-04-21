@@ -3,6 +3,8 @@
 
 position_detail scr_size = {30, 120};
 
+Character computer;
+
 int main()
 {
     char screen_size[30];
@@ -16,6 +18,8 @@ int main()
     draw_board();
 
     set_initial_data();
+
+    computer.piece[1].position.row = 1;
 
     fill_board();
 
